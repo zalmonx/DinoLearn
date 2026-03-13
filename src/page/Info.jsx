@@ -46,7 +46,7 @@ const assets = {
   // ส่วนที่เพิ่มใหม่สำหรับ Puzzle
   fossilPart1: "/assets/img/fossilepage3_3.png",
   fossilPart2: "/assets/img/fossilepage3_4.png",
-  completedFossil: "/assets/img/Frame41.png",
+  completedFossil: "/assets/img/dinofullskel.png",
 };
 
 // --- Sub-Component: PuzzleSection ---
@@ -70,7 +70,10 @@ function PuzzleSection({ onComplete }) {
 
 
   return (
-    <section id="puzzle-game" className="relative h-screen flex items-center justify-center bg-[#422c17] overflow-hidden">
+    <section id="puzzle-game" className="relative h-screen flex items-center justify-center bg-[#422c17] overflow-hidden"
+      style={{
+        backgroundImage: `url(${assets.BGpage3})`, backgroundSize: '100% 100%'
+      }}>
       <div className="absolute top-12 md:top-20 text-center z-10 px-6">
         <h2 className="text-[#f3edd7] text-3xl md:text-5xl mb-2 font-Regular text-shadow-lg">คืนชีพซากดึกดำบรรพ์!</h2>
         <p className="text-[#f3edd7]/60 font-Regular italic">
@@ -79,7 +82,10 @@ function PuzzleSection({ onComplete }) {
       </div>
 
       {!isMerged ? (
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center"
+          style={{
+            backgroundImage: `url(${assets.BGpage3})`, backgroundSize: '100% 100%'
+          }}>
 
           {/* วงกลมเป้าหมาย (Drop Zone) */}
           <motion.div
@@ -146,7 +152,8 @@ function PuzzleSection({ onComplete }) {
           transition={{ type: "spring", stiffness: 100, damping: 12 }}
           className="flex flex-col items-center gap-6"
         >
-          <div className="relative">
+          <div className="relative"
+          >
 
             <img
               src={assets.completedFossil}
@@ -155,7 +162,7 @@ function PuzzleSection({ onComplete }) {
             />
           </div>
           <h2 className="text-[#f3edd7] text-5xl md:text-8xl  font-Regular mt-4">สำเร็จ!</h2>
-          <p className="text-[#f3edd7]/80 text-xl">คืนชีพสำเร็จแล้ว!</p>
+          <p className="text-[#f3edd7]/80 text-xl">ค้นพบซากไดโนเสาร์แล้ว!</p>
         </motion.div>
       )}
     </section>
@@ -512,7 +519,9 @@ function App() {
       </section>
 
       {/* --- แทรก Puzzle Section ตรงนี้ --- */}
-      <PuzzleSection onComplete={() => scrollToSection('types')} />
+      <PuzzleSection onComplete={() => scrollToSection('types')} style={{
+        backgroundImage: `url(${assets.BGpage3})`, backgroundSize: '100% 100%'
+      }} />
 
       {/* 5. Type Selector */}
       <section id="types" className="relative min-h-screen py-20 bg-stone-100 flex flex-col items-center"
@@ -587,16 +596,16 @@ function App() {
       aspect-square bg-[radial-gradient(circle,_rgba(255,255,255,0.6)_0%,_transparent_70%)] rounded-full blur-2xl pointer-events-none"></div>
 
             <p className="intro-text-1 relative z-10 text-[#5D3E1F] 
-      text-xl md:text-3xl text-center leading-relaxed font-Regular 
-      max-w-3xl">
+            text-xl md:text-3xl text-center leading-relaxed font-Regular 
+            max-w-3xl">
               เมื่อเวลาผ่านไปหลายทศวรรษ ชั้นหินก็ถูกกัดกร่อนจากลม ฝน และน้ำ
             </p>
           </div>
 
           {/* ส่วนที่ 2: ข้อความที่สอง (ซ่อนไว้ก่อนด้วย opacity-0) */}
           <p className="intro-text-2 opacity-0 translate-y-10 
-    text-[#5D3E1F] text-xl md:text-3xl text-center 
-    leading-relaxed font-Regular max-w-3xl">
+            text-[#5D3E1F]  text-center 
+            leading-relaxed font-Regular max-w-3xl mx-auto">
             เมื่อเวลาผ่านไป หลายล้านปี ซากดึกดำบรรพ์เหล่านี้ถูกค้นพบโดยนักบรรพชีวินวิทยา
           </p>
 
@@ -692,7 +701,15 @@ function App() {
             ของสิ่งมีชีวิตในอดีตว่าสัตว์เปลี่ยนแปลงไปอย่างไร
           </p>
         </div>
+
+        <div>
+          <p className="text-[#5c3d20] text-left text-2xl md:text-3xl 
+          self-start text-animate font-Regular">
+            สำรวจไดโนเสาร์ไทยคลิกเลย!
+          </p>
+        </div>
       </section>
+
 
     </div>
   );

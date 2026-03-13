@@ -139,17 +139,33 @@ img {
   }
 
   #intro p {
-    font-size: 0.7rem !important;
+    font-size: 0.75rem !important;
   }
 
   /* ── Info page — Found sections ── */
   #found-intro p,
-  #found-section p,
-  #found-2 p,
-  #found-3 div,
-  #found-4 h1,
+  #found-section p {
+    font-size: 0.8rem !important;
+  }
+
+  #found-2 h2 {
+    font-size: 1.2rem !important;
+  }
+
+  #found-2 p {
+    font-size: 0.7rem !important;
+  }
+
+  #found-3 div {
+    font-size: 1rem !important;
+  }
+
+  #found-4 h1 {
+    font-size: 1.1rem !important;
+  }
+
   #found-4 p {
-    font-size: 0.85rem !important;
+    font-size: 0.8rem !important;
   }
 
   #found-2 h2 {
@@ -159,6 +175,16 @@ img {
   /* ── Fossil images ── */
   .fossil-container img {
     max-width: 35vw !important;
+  }
+
+  .fossilshowing {
+    width: 150px !important;
+    left: -10% !important;
+  }
+
+  /* ── Dino skeleton images ── */
+  .process-text-1 img {
+    width: 80vw !important;
   }
 
   /* ── Grid — 1 คอลัมน์ ── */
@@ -353,7 +379,7 @@ img {
 
   /* ── Info page — Dino skeleton images ── */
   .process-text-1 img {
-    width: 250px !important;
+    width: 80vw !important;
   }
 
   /* ── Info page — Found sections ── */
@@ -388,7 +414,7 @@ img {
   }
 
   .fossilshowing {
-    width: 50vw !important;
+    width: 400px !important;
     left: 10% !important;
   }
 
