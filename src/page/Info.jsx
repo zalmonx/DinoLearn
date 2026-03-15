@@ -67,9 +67,6 @@ function PuzzleSection({ onComplete }) {
       return () => clearTimeout(timer);
     }
   }, [part1Collected, part2Collected]);
-
-
-
   return (
     <section id="puzzle-game" className="relative h-screen flex items-center justify-center bg-[#422c17] overflow-hidden"
       style={{
@@ -553,17 +550,18 @@ function App() {
         <h2 className="text-5xl text-[#f3edd7] mb-12 mt-3 font-Regular">ประเภทของซากดึกดำบรรพ์</h2>
         <p className="text-3xl text-[#f3edd7] mb-12 mt-3 font-Regular"> คลิกที่ซากดึกดำบรรพ์เพื่อทำความรู้จัก </p>
 
-        {/* เพิ่มคลาส mt-[20vh] เพื่อกำหนดระยะห่างจากขอบบนเฉพาะจุด */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-10 w-full max-w-7xl mt-[20vh]">
+        {/* นำ Grid ออก และเปลี่ยนเป็น Flex แนวนอน */}
+        {/* ให้ desktop เป็น flex ตามต้องการ หรือใช้ md:flex-row เพื่อจัดเรียงแนวนอนในขนาดเล็กด้วย */}
+        <div className="flex flex-row justify-center items-center gap-4 md:gap-8 px-4 md:px-10 w-full max-w-7xl mt-[10vh] md:mt-[20vh] overflow-x-auto pb-8 snap-x snap-mandatory">
           {fossilData.map((f, i) => (
             <motion.div
               key={i}
               whileHover={{ y: -10 }}
               onClick={() => setSelectedFossil(f)}
-              className="bg-[#f3edd7] p-8 rounded-3xl shadow-xl cursor-pointer text-center group transition-colors hover:bg-[#5c3d20]"
+              className="bg-[#f3edd7] flex flex-col md:flex-col items-center justify-center p-4 md:p-8 rounded-3xl shadow-xl cursor-pointer text-center group transition-colors hover:bg-[#5c3d20] min-w-[200px] md:min-w-0 flex-1 snap-center shrink-0"
             >
-              <img src={f.img} className="h-48 mx-auto object-contain mb-4" />
-              <h3 className="text-xl font-bold group-hover:text-white transition-colors font-Regular">{f.title}</h3>
+              <img src={f.img} className="h-24 sm:h-32 md:h-48 mx-auto object-contain mb-2 md:mb-4" />
+              <h3 className="text-sm text-[#5c3d20] sm:text-lg md:text-xl font-bold group-hover:text-white transition-colors font-Regular">{f.title}</h3>
             </motion.div>
           ))}
         </div>
@@ -578,7 +576,7 @@ function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[10001] flex items-center justify-center p-6"
+              className="fixed inset-0 z-[10001] flex items-center justify-center p-6 font-family-Regular"
             >
               <div
                 onClick={() => setSelectedFossil(null)}
@@ -595,7 +593,7 @@ function App() {
                 <p className="text-[#5c3d20]/80 text-lg leading-relaxed">{selectedFossil.detail}</p>
                 <button
                   onClick={() => setSelectedFossil(null)}
-                  className="mt-8 bg-[#5c3d20] text-[#f3edd7] px-10 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg"
+                  className="mt-8 bg-[#5c3d20] text-[#f3edd7] px-10 py-3 rounded-full  hover:scale-105 transition-transform shadow-lg"
                 >
                   เข้าใจแล้ว
                 </button>
