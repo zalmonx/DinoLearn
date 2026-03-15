@@ -43,6 +43,7 @@ const assets = {
   fossilepage3_4: '/assets/img/fossilepage3_4.png',
   bird: '/assets/img/bird.png',
   rain: '/assets/img/rain.png',
+  tiger: '/assets/img/tiger.png',
   // ส่วนที่เพิ่มใหม่สำหรับ Puzzle
   fossilPart1: "/assets/img/fossilepage3_3.png",
   fossilPart2: "/assets/img/fossilepage3_4.png",
@@ -204,120 +205,142 @@ function App() {
   // GSAP Animations
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      // 1. สร้าง Pulse Animation รอไว้
-      pulseRef.current = gsap.to(".fossilshowing", {
-        scale: 1.05,
-        duration: 0.8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        paused: true
-      });
+      let mm = gsap.matchMedia();
 
-      // 2. อนิเมชั่นเด้งเข้ามาจากทางขวา
-      gsap.from(".fossilshowing", {
-        x: 800,
-        opacity: 0,
-        scale: 0.5,
-        duration: 1.5,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: "#found-section",
-          start: "top 60%",
-          toggleActions: "play none none reverse",
-          onEnter: () => pulseRef.current?.play(),
-          onLeaveBack: () => {
-            pulseRef.current?.pause();
-            gsap.set(".fossilshowing", { scale: 1 });
+      mm.add({
+        isDesktop: "(min-width: 1025px)",
+        isTablet: "(min-width: 668px) and (max-width: 1024px)",
+        isMobile: "(max-width: 667px)"
+      }, (context) => {
+        let { isDesktop, isTablet, isMobile } = context.conditions;
+
+        // 1. สร้าง Pulse Animation รอไว้
+        pulseRef.current = gsap.to(".fossilshowing", {
+          scale: 1.05,
+          duration: 0.8,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          paused: true
+        });
+
+        // 2. อนิเมชั่นเด้งเข้ามาจากทางขวา
+        gsap.from(".fossilshowing", {
+          x: isMobile ? 300 : isTablet ? 500 : 800,
+          opacity: 0,
+          scale: isMobile ? 0.8 : 0.5,
+          duration: 1.5,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: "#found-section",
+            start: "top 60%",
+            toggleActions: "play none none reverse",
+            onEnter: () => pulseRef.current?.play(),
+            onLeaveBack: () => {
+              pulseRef.current?.pause();
+              gsap.set(".fossilshowing", { scale: 1 });
+            }
+          },
+          onComplete: () => pulseRef.current?.play()
+        });
+
+        // 3. Hero Parallax
+        gsap.to(".mountain-4", { y: isMobile ? 50 : 150, scrollTrigger: { trigger: ".hero-section", scrub: true } });
+        gsap.to(".mountain-3", { y: isMobile ? 30 : 80, scrollTrigger: { trigger: ".hero-section", scrub: true } });
+
+        // 4. Fossil Process Timeline (อัปเกรด Stage และเอฟเฟกต์สั่น)
+        const processTL = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".fossil-drop-section",
+            start: "top top",
+            end: "+=6000", // เพิ่มระยะเพื่อให้เห็นการเปลี่ยน Stage ชัดขึ้น
+            scrub: 1.5,
+            pin: true,
           }
-        },
-        onComplete: () => pulseRef.current?.play()
-      });
+        });
 
-      // 3. Hero Parallax
-      gsap.to(".mountain-4", { y: 150, scrollTrigger: { trigger: ".hero-section", scrub: true } });
-      gsap.to(".mountain-3", { y: 80, scrollTrigger: { trigger: ".hero-section", scrub: true } });
+        processTL
+          // เริ่มต้นข้อความชุดที่ 1
+          .to(".process-text-1", { opacity: 1, duration: 1 })
 
-      // 4. Fossil Process Timeline (อัปเกรด Stage และเอฟเฟกต์สั่น)
-      const processTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".fossil-drop-section",
-          start: "top top",
-          end: "+=6000", // เพิ่มระยะเพื่อให้เห็นการเปลี่ยน Stage ชัดขึ้น
-          scrub: 1.5,
-          pin: true,
-        }
-      });
+          // --- Stage 1 -> 2 ---
+          // สั่นเบาๆ เหมือนมีการทับถม
+          .to(".dino-container", { x: 5, yoyo: true, repeat: 5, duration: 0.1 }, "+=0.2")
+          // Stage 1 ค่อยๆ จางหายไปพร้อมปรับฟิลเตอร์
+          .to(".dinofull-1", { opacity: 0, filter: "brightness(0.8) sepia(0.5)", duration: 1 }, "-=0.5")
+          // Stage 2 ปรากฏขึ้นมา
+          .to(".dinofull-2", { opacity: 1, duration: 1 }, "-=1")
 
-      processTL
-        // เริ่มต้นข้อความชุดที่ 1
-        .to(".process-text-1", { opacity: 1, duration: 1 })
+          // --- Stage 2 -> 3 ---
+          // สั่นแรงขึ้นเล็กน้อย
+          .to(".dino-container", { x: -8, yoyo: true, repeat: 7, duration: 0.1 }, "+=0.2")
+          // Stage 2 หายไปพร้อมปรับฟิลเตอร์ให้ดูเหมือนหิน
+          .to(".dinofull-2", { opacity: 0, duration: 1 }, "-=0.7")
+          // Stage 3 ปรากฏขึ้นมาพร้อม Contrast ที่จัดขึ้น
+          .to(".dinofull-3", { opacity: 1, duration: 1 }, "-=1")
 
-        // --- Stage 1 -> 2 ---
-        // สั่นเบาๆ เหมือนมีการทับถม
-        .to(".dino-container", { x: 5, yoyo: true, repeat: 5, duration: 0.1 }, "+=0.2")
-        // Stage 1 ค่อยๆ จางหายไปพร้อมปรับฟิลเตอร์
-        .to(".dinofull-1", { opacity: 0, filter: "brightness(0.8) sepia(0.5)", duration: 1 }, "-=0.5")
-        // Stage 2 ปรากฏขึ้นมา
-        .to(".dinofull-2", { opacity: 1, duration: 1 }, "-=1")
+          // จบข้อความชุดที่ 1
+          .to(".process-text-1", { opacity: 0, y: isMobile ? -30 : -50, duration: 1 }, "+=0.5")
+          .to({}, { duration: 1 }) // เว้นจังหวะว่างเล็กน้อย
 
-        // --- Stage 2 -> 3 ---
-        // สั่นแรงขึ้นเล็กน้อย
-        .to(".dino-container", { x: -8, yoyo: true, repeat: 7, duration: 0.1 }, "+=0.2")
-        // Stage 2 หายไปพร้อมปรับฟิลเตอร์ให้ดูเหมือนหิน
-        .to(".dinofull-2", { opacity: 0, duration: 1 }, "-=0.7")
-        // Stage 3 ปรากฏขึ้นมาพร้อม Contrast ที่จัดขึ้น
-        .to(".dinofull-3", { opacity: 1, duration: 1 }, "-=1")
+          // ข้อความชุดที่ 2 และการหล่นของเศษฟอสซิล
+          .to(".process-text-2", { opacity: 1, duration: 1 })
+          .from(".fossil-1", { y: isMobile ? -400 : -800, rotation: -40, opacity: 0, duration: 1.5 }, "-=0.5")
+          .from(".fossil-2", { y: isMobile ? -400 : -800, rotation: 30, opacity: 0, duration: 1.5 }, "-=1.2")
+          .from(".fossil-3", { y: isMobile ? -400 : -800, rotation: -20, opacity: 0, duration: 1.5 }, "-=1.2")
+          .from(".fossil-4", { y: isMobile ? -400 : -800, rotation: -20, opacity: 0, duration: 1.5 }, "-=1.2")
 
-        // จบข้อความชุดที่ 1
-        .to(".process-text-1", { opacity: 0, y: -50, duration: 1 }, "+=0.5")
-        .to({}, { duration: 1 }) // เว้นจังหวะว่างเล็กน้อย
+          // ข้อความชุดที่ 3 และเอฟเฟกต์ Blur พื้นหลัง
+          .to(".process-text-2", { opacity: 0, y: isMobile ? -30 : -50, duration: 1 }, "+=2")
+          .to(".fossil-container img", { filter: "blur(4px)", opacity: 0.3, duration: 1 })
+          .to(".process-text-3", { opacity: 1, y: 0, duration: 1.5 }, "-=0.5");
 
-        // ข้อความชุดที่ 2 และการหล่นของเศษฟอสซิล
-        .to(".process-text-2", { opacity: 1, duration: 1 })
-        .from(".fossil-1", { y: -800, rotation: -40, opacity: 0, duration: 1.5 }, "-=0.5")
-        .from(".fossil-2", { y: -800, rotation: 30, opacity: 0, duration: 1.5 }, "-=1.2")
-        .from(".fossil-3", { y: -800, rotation: -20, opacity: 0, duration: 1.5 }, "-=1.2")
-        .from(".fossil-4", { y: -800, rotation: -20, opacity: 0, duration: 1.5 }, "-=1.2")
+        // 5. Intro Animation
+        const introTL = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#found-intro",
+            start: "top top",
+            end: "+=4000",
+            scrub: 1.5,
+            pin: true,
+          }
+        });
 
-        // ข้อความชุดที่ 3 และเอฟเฟกต์ Blur พื้นหลัง
-        .to(".process-text-2", { opacity: 0, y: -50, duration: 1 }, "+=2")
-        .to(".fossil-container img", { filter: "blur(4px)", opacity: 0.3, duration: 1 })
-        .to(".process-text-3", { opacity: 1, y: 0, duration: 1.5 }, "-=0.5");
+        introTL
+          .from(".intro-text", { opacity: 0, y: isMobile ? 15 : 30, duration: 1 })
+          .to(".bird-fly", {
+            x: isMobile ? -500 : isTablet ? -1000 : -1500,
+            y: isMobile ? -300 : isTablet ? -600 : -1000,
+            rotation: -20,
+            scale: isMobile ? 0.3 : 0.5,
+            duration: 3
+          }, "+=0.5");
 
-      // 5. Intro Animation
-      const introTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#found-intro",
-          start: "top top",
-          end: "+=4000",
-          scrub: 1.5,
-          pin: true,
-        }
-      });
+        // 6. Text Animate for Found-4
+        gsap.from(".text-animate", {
+          y: isMobile ? 30 : 50,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: "#found-4",
+            start: "top 70%",
+          }
+        });
 
-      introTL
-        .from(".intro-text", { opacity: 0, y: 30, duration: 1 })
-        .to(".bird-fly", {
-          x: -1500,
-          y: -1000,
-          rotation: -20,
-          scale: 0.5,
-          duration: 3
-        }, "+=0.5");
-
-      // 6. Text Animate for Found-4
-      gsap.from(".text-animate", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: "#found-4",
-          start: "top 70%",
-        }
-      });
-
+        // 7. Tiger Animate
+        gsap.from(".tiger-animate", {
+          x: isMobile ? 300 : 300,
+          opacity: 0,
+          scale: 0.2,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#found-4",
+            start: "top 50%",
+          }
+        });
+      }); // end matchMedia
     }, containerRef);
 
     return () => ctx.revert();
@@ -694,23 +717,20 @@ function App() {
         </div>
 
         <div className="relative z-10 flex flex-col px-6 w-full max-w-5xl items-start pt-[50vh] gap-12" >
+          <img
+            src={assets.tiger}
+            className="tiger-animate absolute bottom-[10%] left-[157px] w-64 md:w-80 lg:w-[500px] z-20 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+            alt="fossil showing"
+          />
           {/* ปรับเป็น self-start เพื่อให้ชิดซ้ายตาม Container หลัก */}
           <p className="text-[#5c3d20] text-left text-2xl md:text-3xl 
-          self-start text-animate font-Regular">
+          self-start text-animate font-Regular -mt-20 md:-mt-28 relative z-30">
             บอกถิ่นกำเนิดและวิวัฒนาการ <br />
             ของสิ่งมีชีวิตในอดีตว่าสัตว์เปลี่ยนแปลงไปอย่างไร
           </p>
         </div>
 
-        <div>
-          <p className="text-[#5c3d20] text-left text-2xl md:text-3xl 
-          self-start text-animate font-Regular">
-            สำรวจไดโนเสาร์ไทยคลิกเลย!
-          </p>
-        </div>
       </section>
-
-
     </div>
   );
 }

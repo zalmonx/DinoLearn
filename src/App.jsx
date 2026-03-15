@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, createBrowserRouter, RouterProv
 import Home from "./page/Home";
 import Info from "./page/Info";
 import Model from "./page/Model";
+import RotationFix from "./page/ratation fix";
 
 
 const router = createBrowserRouter([
@@ -14,10 +15,12 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <div>
+      <RotationFix />
       <RouterProvider router={router} />
     </div>
   )
 };
+
 
 
 
