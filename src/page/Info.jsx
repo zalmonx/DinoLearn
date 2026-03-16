@@ -654,7 +654,8 @@ function App() {
           <img
             src={assets.fossilshowing}
             onClick={() => setShowFossilInfo(!showFossilInfo)}
-            className="fossilshowing absolute bottom-[10%] left-[157px] w-64 md:w-80 lg:w-[500px] z-20 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+            className="fossilshowing absolute bottom-[10%] left-[157px] w-64 md:w-80 lg:w-[500px] z-20 
+            cursor-pointer transition-transform hover:scale-105 active:scale-95"
             alt="fossil showing"
           />
 

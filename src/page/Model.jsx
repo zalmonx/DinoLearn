@@ -262,7 +262,7 @@ function App() {
                 <div key={i} className="flex flex-row items-center gap-[3%]">
 
                   {/* ป้ายกำกับ: ใช้ความกว้างเป็นเปอร์เซ็นต์ของ Container */}
-                  <span className="bg-[#5D4037] text-[#f3edd7] px-[3%] py-[0.5%] rounded-full text-[2.5vw] md:text-[1.2vw] shadow-sm text-center min-w-[25%] md:min-w-[100px]">
+                  <span className="text-[#4E342E] px-[3%] py-[0.5%] rounded-full text-[2.5vw] md:text-[1.2vw] shadow-sm text-center min-w-[25%] md:min-w-[100px]">
                     {item.label}
                   </span>
 
