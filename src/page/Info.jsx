@@ -36,6 +36,8 @@ const assets = {
   frame33: '/assets/img/Frame39.png',
   frame34: '/assets/img/Frame40.png',
   frame35: '/assets/img/Frame41.png',
+  ending: '/assets/img/ending.png',
+  landing: '/assets/img/firstpage.png',
   fossilshowing: '/assets/img/fossilshowing.png',
   fossilepage3_1: '/assets/img/fossilepage3_1.png',
   fossilepage3_2: '/assets/img/fossilepage3_2.png',
@@ -439,15 +441,13 @@ function App() {
       </nav>
 
       {/* 1. Hero Section */}
-      <section className="hero-section relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <section className="hero-section 
+      relative h-screen flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${assets.landing})`, backgroundSize: '100% 100%' }}>
         <div className="text-center z-50 px-6">
           <h1 className="text-6xl md:text-8xl text-[#5c3d20]">โลกของซากดึกดำบรรพ์ !</h1>
           <p className="text-xl md:text-2xl text-[#5c3d20]/80 mt-6 max-w-2xl mx-auto">มาร่วมเดินทางย้อนเวลากลับไปสำรวจโลกยุคดึกดำบรรพ์กันเถอะ!</p>
         </div>
-        <img src={assets.mountainlayer4} className="mountain-4 absolute bottom-0 w-full h-auto z-10" />
-        <img src={assets.mountainlayer3} className="mountain-3 absolute bottom-0 w-full h-auto z-20" />
-        <img src={assets.grasslayer2} className="absolute bottom-0 w-full z-30" />
-        <img src={assets.grasslayer1} className="absolute bottom-0 w-full z-40" />
         <div className="absolute bottom-[20px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-50">
           <div className="absolute bottom-[60px] left-1/2 -translate-x-1/2 w-[30px] 
           h-[50px] border-2 border-[#5c3d20] rounded-full cursor-pointer z-50 before:absolute before:top-[8px] before:left-1/2 
@@ -730,7 +730,29 @@ function App() {
         </div>
 
       </section>
-    </div>
+
+      <section id='ending' className="relative h-screen flex  bg-cover bg-center"
+        style={{ backgroundImage: `url(${assets.ending})`, backgroundSize: '100% 100%' }}>
+
+        <div className="relative z-10 flex flex-col px-6 w-full max-w-5xl items-start pt-[20vh] gap-12">
+
+          <p className="text-[#5c3d20] text-3xl md:text-2xl  text-animate font-Regular">
+            เพราะซากดึกดำบรรพ์คือกุญแจสำคัญในการเข้าใจอดีตของโลกที่เราอาศัยอยู่
+          </p>
+        </div>
+        <div className="relative z-10 flex flex-col px-6 w-full max-w-5xl items-end pt-[50vh] gap-12">
+          <p className="text-[#5c3d20] text-right text-2xl md:text-3xl 
+          self-end text-animate font-Regular -mt-20 md:-mt-28 relative z-30">
+            มาร่วมกันศึกษาและอนุรักษ์ซากดึกดำบรรพ์ <br /> เพื่อส่งต่อความรู้และแรงบันดาลใจให้กับคนรุ่นต่อไปกันเถอะ!
+          </p>
+        </div>
+        <Link to="/Model" className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white/20 backdrop-blur-md 
+        text-[#5c3d20] px-6 py-3 rounded-lg text-lg font-bold border-2 border-[#5c3d20]/30
+        hover:bg-[#5c3d20]/20 hover:border-[#5c3d20]/60 transition-all z-20 text-center whitespace-nowrap">
+          ไปดูไดโนเสาร์ที่ถูกค้นพบในประเทศไทยกันเถอะ!
+        </Link>
+      </section >
+    </div >
   );
 }
 

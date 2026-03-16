@@ -120,6 +120,26 @@ img {
     font-size: 0.7rem !important;
   }
 
+  /* ── Home page buttons ── */
+  .home-btn-info {
+    top: 30% !important;
+    left: 25% !important;
+    padding: 0.3rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .home-btn-model {
+    bottom: 10% !important;
+    right: 3% !important;
+    padding: 0.3rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .home-btn-info img,
+  .home-btn-model img {
+    width: 45vw !important;
+  }
+
 
   /* ── Info page — Process text ── */
   .process-text-1 h2,
@@ -373,6 +393,24 @@ img {
     font-size: 0.8rem !important;
   }
 
+  /* ── Home page buttons ── */
+  .home-btn-info {
+    top: 32% !important;
+    left: 28% !important;
+    padding: 0.4rem !important;
+  }
+
+  .home-btn-model {
+    bottom: 12% !important;
+    right: 5% !important;
+    padding: 0.4rem !important;
+  }
+
+  .home-btn-info img,
+  .home-btn-model img {
+    width: 40vw !important;
+  }
+
   /* ── Footer ── */
   footer {
     padding-top: 1rem !important;
@@ -579,6 +617,24 @@ img {
   section button[class*="rounded-full"] {
     padding: 0.4rem 1rem !important;
     font-size: 0.7rem !important;
+  }
+
+  /* ── Home page buttons ── */
+  .home-btn-info {
+    top: 25% !important;
+    left: 25% !important;
+    padding: 0.3rem !important;
+  }
+
+  .home-btn-model {
+    bottom: 10% !important;
+    right: 5% !important;
+    padding: 0.3rem !important;
+  }
+
+  .home-btn-info img,
+  .home-btn-model img {
+    width: 25vw !important;
   }
 
   /* ── Grid — 2 คอลัมน์ ── */
