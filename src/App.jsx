@@ -10,7 +10,9 @@ const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/Info", element: <Info /> },
   { path: "/Model", element: <Model /> },
-]);
+], {
+  basename: "/DinoLearn/",
+});
 
 const App = () => {
   return (
