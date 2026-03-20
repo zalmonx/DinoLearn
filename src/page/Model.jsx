@@ -102,7 +102,7 @@ const dinoData = [
     diet: "กินเนื้อ",
     dietIcon: `${import.meta.env.BASE_URL}assets/images/meaticon.PNG`,
     model: `${import.meta.env.BASE_URL}assets/model/siamotyranusani.glb`,
-    img: `${import.meta.env.BASE_URL}assets/images/siamotyranusimg.PNG`,
+    img: `${import.meta.env.BASE_URL}assets/images/siamotyranusimg.png`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "-45deg 75deg 70m"
   },
@@ -115,7 +115,7 @@ const dinoData = [
     diet: "กินพืช",
     dietIcon: `${import.meta.env.BASE_URL}assets/images/planticon.PNG`,
     model: `${import.meta.env.BASE_URL}assets/model/Isanosaurusani.glb`,
-    img: `${import.meta.env.BASE_URL}assets/images/Isanosaurusimg.PNG`,
+    img: `${import.meta.env.BASE_URL}assets/images/Isanosaurusimg.png`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "-40deg 75deg 80m"
   },
