@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://zalmonx.github.io/DinoLearn",
+  "homepage": "https://zalmonx.github.io/ilovemythesisverymuch",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
