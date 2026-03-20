@@ -11,7 +11,7 @@ const router = createBrowserRouter([
   { path: "/Info", element: <Info /> },
   { path: "/Model", element: <Model /> },
 ], {
-  basename: "/ilovemythesisverymuch/",
+  basename: "/DinoLearn/",
 });
 
 const App = () => {
