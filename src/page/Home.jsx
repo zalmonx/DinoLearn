@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from "framer-motion"; // เพิ่มส�
 import './Responsive.css';
 
 const image = {
-    backgroundImage: "assets/img/Home.png",
-    button1: "assets/img/button1.png",
-    button2: "assets/img/button2.png",
+    backgroundImage: `${import.meta.env.BASE_URL}assets/img/Home.png`,
+    button1: `${import.meta.env.BASE_URL}assets/img/button1.png`,
+    button2: `${import.meta.env.BASE_URL}assets/img/button2.png`,
 }
 
 const Home = () => {

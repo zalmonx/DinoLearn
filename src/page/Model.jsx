@@ -9,22 +9,22 @@ import '@google/model-viewer';
 
 // แก้ไข Path ให้เป็น String ตรงๆ เพื่อให้แท็ก <img> ใช้งานได้
 const image = {
-  backgroundImage: "assets/images/bgdino.PNG",
-  bookletImage: "assets/images/booklet.png",
-  info: "assets/images/info.png",
-  kinareeIcon: "assets/images/kinnareemimusicon.png",
-  phuwiangIcon: "assets/images/phuwiangicon.png",
-  siammosaurusIcon: "assets/images/siammosaurusicon.png",
-  psittacosaurusIcon: "assets/images/psittacosaurusicon.png",
-  minimoIcon: "assets/images/minimoicon.png",
-  meatIcon: "assets/images/meaticon.PNG",
-  plantIcon: "assets/images/planticon.PNG",
+  backgroundImage: `${import.meta.env.BASE_URL}assets/images/bgdino.PNG`,
+  bookletImage: `${import.meta.env.BASE_URL}assets/images/booklet.png`,
+  info: `${import.meta.env.BASE_URL}assets/images/info.png`,
+  kinareeIcon: `${import.meta.env.BASE_URL}assets/images/kinnareemimusicon.png`,
+  phuwiangIcon: `${import.meta.env.BASE_URL}assets/images/phuwiangicon.png`,
+  siammosaurusIcon: `${import.meta.env.BASE_URL}assets/images/siammosaurusicon.png`,
+  psittacosaurusIcon: `${import.meta.env.BASE_URL}assets/images/psittacosaurusicon.png`,
+  minimoIcon: `${import.meta.env.BASE_URL}assets/images/minimoicon.png`,
+  meatIcon: `${import.meta.env.BASE_URL}assets/images/meaticon.PNG`,
+  plantIcon: `${import.meta.env.BASE_URL}assets/images/planticon.PNG`,
 };
 const assets = {
   //เสียง
-  bgmusic: "assets/sound/Stardew Valley OST - In The Deep Woods.mp3",
+  bgmusic: `${import.meta.env.BASE_URL}assets/sound/Stardew Valley OST - In The Deep Woods.mp3`,
   // เพิ่มเสียงคลิก (เปลี่ยน path ให้ตรงกับไฟล์ของคุณ)
-  clickSfx: "assets/sound/click.mp3"
+  clickSfx: `${import.meta.env.BASE_URL}assets/sound/click.mp3`
 }
 
 const dinoData = [
@@ -35,9 +35,9 @@ const dinoData = [
     size: "ยาวประมาณ 15 - 20 เมตร",
     place: "ขอนแก่น และกาฬสินธุ์ หมวดหินเสาขัว",
     diet: "กินพืช",
-    dietIcon: "assets/images/planticon.PNG",
-    model: 'assets/model/phuwiangani.glb',
-    img: 'assets/images/phuwiangicon.png',
+    dietIcon: `${import.meta.env.BASE_URL}assets/images/planticon.PNG`,
+    model: `${import.meta.env.BASE_URL}assets/model/phuwiangani.glb`,
+    img: `${import.meta.env.BASE_URL}assets/images/phuwiangicon.png`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "-55deg 75deg 50m"
   },
@@ -48,9 +48,9 @@ const dinoData = [
     size: "ยาวประมาณ 1-2 เมตร",
     place: "ขอนแก่น หมวดหินเสาขัว",
     diet: "กินพืช และสัตว์เล็ก",
-    dietIcon: "assets/images/planticon.PNG",
-    model: "assets/model/kinnareemimusani.glb",
-    img: "assets/images/kinnareemimusicon.png",
+    dietIcon: `${import.meta.env.BASE_URL}assets/images/planticon.PNG`,
+    model: `${import.meta.env.BASE_URL}assets/model/kinnareemimusani.glb`,
+    img: `${import.meta.env.BASE_URL}assets/images/kinnareemimusicon.png`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "55deg 75deg 100m"
   },
@@ -61,9 +61,9 @@ const dinoData = [
     size: "ยาวประมาณ 6.5 - 7 เมตร",
     place: "ขอนแก่น หมวดหินเสาขัว",
     diet: "กินเนื้อ",
-    dietIcon: "assets/images/meaticon.PNG",
-    model: "assets/model/siammosaurusani.glb",
-    img: "assets/images/siammosaurusicon.png",
+    dietIcon: `${import.meta.env.BASE_URL}assets/images/meaticon.PNG`,
+    model: `${import.meta.env.BASE_URL}assets/model/siammosaurusani.glb`,
+    img: `${import.meta.env.BASE_URL}assets/images/siammosaurusicon.png`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "-45deg 75deg 70m"
   },
@@ -74,9 +74,9 @@ const dinoData = [
     size: "ยาวประมาณ 1 - 1.5 เมตร",
     place: "ชัยภูมิ หมวดหินโคกกรวด",
     diet: "กินพืช",
-    dietIcon: "assets/images/planticon.PNG",
-    model: "assets/model/psittacosaurusani.glb",
-    img: "assets/images/psittacosaurusicon.png",
+    dietIcon: `${import.meta.env.BASE_URL}assets/images/planticon.PNG`,
+    model: `${import.meta.env.BASE_URL}assets/model/psittacosaurusani.glb`,
+    img: `${import.meta.env.BASE_URL}assets/images/psittacosaurusicon.png`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "60deg 75deg 220m"
   },
@@ -87,9 +87,9 @@ const dinoData = [
     size: "ยาวประมาณ 2 เมตร",
     place: "กาฬสินธุ์ หมวดหินภูกระดึงตอนล่าง",
     diet: "กินพืช",
-    dietIcon: "assets/images/planticon.PNG",
-    model: "assets/model/minimoani.glb",
-    img: "assets/images/minimoicon.png",
+    dietIcon: `${import.meta.env.BASE_URL}assets/images/planticon.PNG`,
+    model: `${import.meta.env.BASE_URL}assets/model/minimoani.glb`,
+    img: `${import.meta.env.BASE_URL}assets/images/minimoicon.png`,
     cameraTarget: "0m 2.5m 0m",
     cameraOrbit: "45deg 75deg 20m"
   },
@@ -100,9 +100,9 @@ const dinoData = [
     size: "ยาวประมาณ  6.5 - 7 เมตร",
     place: "ขอนแก่น หมวดหินเสาขัว",
     diet: "กินเนื้อ",
-    dietIcon: "assets/images/meaticon.PNG",
-    model: "assets/model/siamotyranusani.glb",
-    img: "assets/images/siamotyranusimg.PNG",
+    dietIcon: `${import.meta.env.BASE_URL}assets/images/meaticon.PNG`,
+    model: `${import.meta.env.BASE_URL}assets/model/siamotyranusani.glb`,
+    img: `${import.meta.env.BASE_URL}assets/images/siamotyranusimg.PNG`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "-45deg 75deg 70m"
   },
@@ -113,9 +113,9 @@ const dinoData = [
     size: "ยาวประมาณ 12 - 16 เมตร",
     place: "ชัยภูมิ หมวดหินน้ำทอง",
     diet: "กินพืช",
-    dietIcon: "assets/images/planticon.PNG",
-    model: "assets/model/Isanosaurusani.glb",
-    img: "assets/images/Isanosaurusimg.PNG",
+    dietIcon: `${import.meta.env.BASE_URL}assets/images/planticon.PNG`,
+    model: `${import.meta.env.BASE_URL}assets/model/Isanosaurusani.glb`,
+    img: `${import.meta.env.BASE_URL}assets/images/Isanosaurusimg.PNG`,
     cameraTarget: "0m 4m 0m",
     cameraOrbit: "-40deg 75deg 80m"
   },
