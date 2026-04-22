@@ -33,7 +33,7 @@ const Loading = () => {
                     className="relative z-10"
                 >
                     <img
-                        src={`${import.meta.env.BASE_URL}assets/img/dinomug.webp`}
+                        src={`${import.meta.env.BASE_URL}assets/logo.png`}
                         alt="Loading Dinosaur"
                         className="w-24 h-24 md:w-32 md:h-32 object-contain"
                     />
@@ -46,7 +46,7 @@ const Loading = () => {
                 animate={{ opacity: 1 }}
                 className="mt-8 text-center"
             >
-                <h2 className="text-[#5c3d20] text-2xl md:text-3xl font-bold mb-2">กำลังเตรียมตัวย้อนเวลา...</h2>
+                <h2 className="text-[#5c3d20] text-2xl md:text-3xl font-bold mb-2">กำลังโหลด</h2>
                 <div className="flex justify-center gap-1">
                     {[0, 1, 2].map((i) => (
                         <motion.div
